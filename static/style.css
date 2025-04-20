@@ -32,6 +32,7 @@ body.dark {
   max-height: 100vh;
   scrollbar-width: thin;
   scrollbar-color: rgba(255, 255, 255, 0.3) transparent;
+  transition: transform 0.3s ease-in-out;
 }
 body.dark .sidebar {
   background: linear-gradient(180deg, #2a4365 0%, #1a202c 100%);
@@ -43,12 +44,34 @@ body.dark .sidebar {
   background-color: rgba(255, 255, 255, 0.3);
   border-radius: 4px;
 }
+.sidebar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
 .sidebar h2 {
   color: #ffffff;
   font-size: 1.5rem;
   font-weight: 600;
-  margin: 0 0 2rem;
+  margin: 0;
   text-align: center;
+}
+.close-sidebar {
+  background: #4a5568;
+  border: none;
+  border-radius: 8px;
+  width: 36px;
+  height: 36px;
+  color: #fff;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+  display: none;
+}
+.close-sidebar:hover {
+  background: #718096;
+  transform: scale(1.1);
 }
 .options {
   list-style: none;
@@ -86,6 +109,26 @@ body.dark .options button:hover {
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
 }
 
+/* Hamburger Menu Toggle */
+.menu-toggle {
+  display: none;
+  background: #4a5568;
+  border: none;
+  border-radius: 8px;
+  width: 40px;
+  height: 40px;
+  color: #fff;
+  font-size: 1.4rem;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.3s;
+}
+.menu-toggle:hover {
+  background: #718096;
+}
+.menu-toggle.active {
+  transform: rotate(90deg);
+}
+
 /* Main Content */
 .main-content {
   flex: 1;
@@ -100,7 +143,7 @@ body.dark .options button:hover {
 }
 .main-content h1 {
   font-size: 2.25rem;
-  font-weight: 600;
+  font-weight: 700;
   color: #2d3748;
 }
 body.dark .main-content h1 {
@@ -384,11 +427,28 @@ body.dark #evTable tr:last-child td {
     flex-direction: column;
   }
   .sidebar {
-    width: 100%;
-    max-height: 40vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 280px;
+    height: 100vh;
+    transform: translateX(-100%);
+    z-index: 1000;
+  }
+  .sidebar.active {
+    transform: translateX(0);
+  }
+  .close-sidebar {
+    display: block;
+  }
+  .menu-toggle {
+    display: block;
   }
   .main-content {
     padding: 1.5rem;
+  }
+  .main-content header {
+    gap: 1rem;
   }
   .vin-input-wrapper {
     flex-direction: column;
