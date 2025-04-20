@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EV Data Analytics</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+    <script defer src="{{ url_for('static', filename='script.js') }}"></script>
+  </head>
+  <body>
+    <div class="wrapper">
+      <aside class="sidebar">
+        <h2>Graph Explorer</h2>
+        <ul class="options">
+          <li><button data-type="make_counts">Top 10 makes</button></li>
+          <li><button data-type="avg_range">Avg Range by Year</button></li>
+          <li><button data-type="type_dist">EV Type Distribution</button></li>
+          <li>
+            <button data-type="year_dist">Model Year Distribution</button>
+          </li>
+          <li><button data-type="range_vs_msrp">Range vs. MSRP</button></li>
+          <li>
+            <button data-type="state_avg_range">Avg Range by State</button>
+          </li>
+          <li><button data-type="top_cities">Top 10 Cities</button></li>
+          <li><button data-type="cafv_breakdown">CAFV Eligibility</button></li>
+          <li><button data-type="msrp_dist">MSRP Distribution</button></li>
+          <li><button data-type="range_type_box">Range by EV Type</button></li>
+          <li>
+            <button data-type="bev_phev_trend">BEV vs. PHEV Trend</button>
+          </li>
+          <li><button data-type="top5_range">Top 5 Makes Range</button></li>
+          <li><button data-type="top10_districts">Top 10 Districts</button></li>
+          <li><button data-type="corr_heatmap">Correlation Heatmap</button></li>
+        </ul>
+      </aside>
+      <div class="main-content">
+        <header>
+          <h1>EV Data Analytics</h1>
+          <button id="themeToggle" title="Toggle Theme">🌙</button>
+        </header>
+        <section class="card chart-card">
+          <div class="chart-controls">
+            <button id="downloadChart" title="Download Graph">📥</button>
+            <button id="fullViewChart" title="Toggle Full View">⛶</button>
+          </div>
+          <div class="chart-container">
+            <div class="loader" id="chartLoader"></div>
+            <img id="chartImg" src="" alt="Graph will appear here" />
+          </div>
+        </section>
+        <section class="card control-card">
+          <div class="vin-input-wrapper">
+            <input id="vinInput" type="text" placeholder="Enter VIN (1-10)" />
+            <button id="getEvBtn">Search Vehicle</button>
+          </div>
+          <div class="message" id="vinMessage"></div>
+        </section>
+        <section class="card table-card" id="vehicleData">
+          <table id="evTable"></table>
+        </section>
+      </div>
+    </div>
+  </body>
+</html>
