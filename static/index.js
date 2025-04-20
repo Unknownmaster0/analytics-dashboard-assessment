@@ -10,6 +10,23 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  // Menu toggle
+  const menuToggle = document.getElementById("menuToggle");
+  const sidebar = document.getElementById("sidebar");
+  const closeSidebar = document.querySelector(".close-sidebar");
+  if (menuToggle && sidebar) {
+    menuToggle.addEventListener("click", () => {
+      sidebar.classList.toggle("active");
+      menuToggle.classList.toggle("active");
+    });
+  }
+  if (closeSidebar && sidebar) {
+    closeSidebar.addEventListener("click", () => {
+      sidebar.classList.remove("active");
+      menuToggle.classList.remove("active");
+    });
+  }
+
   // Wire up sidebar buttons
   document.querySelectorAll(".options button").forEach((btn) => {
     btn.addEventListener("click", () => {
@@ -18,6 +35,11 @@ document.addEventListener("DOMContentLoaded", () => {
       chartLoader.classList.add("active");
       chartImg.classList.remove("loaded");
       fetchPlot(btn.dataset.type);
+      // Close menu on mobile after selection
+      if (sidebar.classList.contains("active")) {
+        sidebar.classList.remove("active");
+        menuToggle.classList.remove("active");
+      }
     });
   });
 
