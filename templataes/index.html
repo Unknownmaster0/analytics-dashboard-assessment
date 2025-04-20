@@ -12,8 +12,11 @@
   </head>
   <body>
     <div class="wrapper">
-      <aside class="sidebar">
-        <h2>Graph Explorer</h2>
+      <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+          <h2>Graph Explorer</h2>
+          <button class="close-sidebar" title="Close Menu">✕</button>
+        </div>
         <ul class="options">
           <li><button data-type="make_counts">Top 10 makes</button></li>
           <li><button data-type="avg_range">Avg Range by Year</button></li>
@@ -39,6 +42,9 @@
       </aside>
       <div class="main-content">
         <header>
+          <button id="menuToggle" class="menu-toggle" title="Toggle Menu">
+            ☰
+          </button>
           <h1>EV Data Analytics</h1>
           <button id="themeToggle" title="Toggle Theme">🌙</button>
         </header>
